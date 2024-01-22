@@ -60,3 +60,80 @@ function evenOrOdd(x){
 
 const evenOddResult = arr.map(evenOrOdd)
 console.log(evenOddResult)
+
+let arr2 = [1,10,9,100,1000,11,12,13,14,2,3]  //unsorted array
+
+arr2.sort() //it sorts the given array
+
+console.log(arr2)
+
+//default implementation of arr2.sort() is to sort my array in lexicagraphical order
+//lexicographical order means dictionary order
+
+//when to use maps ?
+//In any situation when we have to do an operation on every element of the array and store the result of each operation then map can be a good option
+
+const newArray = [9,8,7,6,5]
+
+function print(element,idx){
+  return `Element at index ${idx} is ${element}`
+}
+
+const result2 = newArray.map(print)
+console.log(result2)
+
+//If the function that we are passing in the map takes two arguments then first argument will be accessing the actual value second argument will be accessing index of that value.
+
+let b = [1,10,9,100,1000,11,12,13,14,2,3]
+//sort b in increasing order
+b.sort(function(a,b){
+  return a-b
+})
+console.log(b)
+//sort is a HOF ,,  the sort function takes a comparator function as argument
+
+//filter()-- it is also a HOF
+//filter also loops over the array element
+//there is one special thing about filter, i.e the argument function f which we have to pass inside a filter should always return a boolean , otherwise output will be converted to a boolean
+
+let arr3 = [1,2,3,4,5,6,7,8,9]
+
+function oddOrEven(x){
+   return (x % 2 == 0) // returning a boolean
+}
+
+const resultArr3 = arr3.filter(oddOrEven)
+
+console.log(resultArr3)
+
+//reduce() -- it is a HOF available for arrays
+
+//reduce also takes a function f as an argument
+//It one by one goes to every element of the array
+
+const arr5 = [1,2,3,4,5,6,7]
+
+function sum(prevResult,currValue){
+  return prevResult + currValue
+}
+
+const result5 = arr5.reduce(sum)
+
+console.log(result5)
+
+let cart = [{price:100000,names:"Iphone"},{price:500,name:"temperedGlass"},{price:500,name:"backCover"}]
+
+const totalPrice = cart.reduce(addThePrice)
+
+function addThePrice(prevResult,currValue){
+  let newPrice = prevResult.price + currValue.price
+  return {price:newPrice}
+}
+console.log(totalPrice.price)
+
+
+
+
+
+
+
