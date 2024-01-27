@@ -15,30 +15,35 @@ console.log(teacher);
 
 //block scope and functional scope
 
-
 {
-  var x = 10
+  var x = 10;
 }
 
-console.log(x)
+console.log(x);
 
 {
-  let y= 10
+  let y = 10;
 }
-console.log(y)
+console.log(y);
 
 function fun() {
-  var k = 10
+  var k = 10;
 }
 
-fun()
+fun();
 
-function gun(){
-  console.log(z)
- var z= 20
+function gun() {
+  console.log(z);
+  var z = 20;
 }
 
-gun()
+gun();
 
+//calling a function before declaring it
 
+hi();
+function hi() {
+  console.log("HI KAPIL SARKAR");
+}
 
+//this pheromone that we are able to execute a function before declaring it is called hoisting
