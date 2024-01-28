@@ -100,3 +100,6 @@ console.log("By Piku")
 // ```
 
 // This example demonstrates how the event loop ensures that asynchronous tasks, like those specified by `setTimeout`, are handled in a non-blocking manner, allowing the program to remain responsive to other tasks.
+
+
+

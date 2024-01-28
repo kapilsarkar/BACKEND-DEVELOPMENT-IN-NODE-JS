@@ -47,3 +47,7 @@ function hi() {
 }
 
 //this pheromone that we are able to execute a function before declaring it is called hoisting
+
+//temporal dead zone
+
+
