@@ -101,5 +101,11 @@ console.log("By Piku")
 
 // This example demonstrates how the event loop ensures that asynchronous tasks, like those specified by `setTimeout`, are handled in a non-blocking manner, allowing the program to remain responsive to other tasks.
 
+//console is also a runtime feature it is not a core javascript feature
+//if runtime will give async feature then console will behave like async feature
+//if runtime will give synchronous code then console will behave like synchronously
+
+//setinterval--
+
 
 
