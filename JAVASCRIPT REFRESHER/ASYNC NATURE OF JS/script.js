@@ -106,6 +106,12 @@ console.log("By Piku")
 //if runtime will give synchronous code then console will behave like synchronously
 
 //setinterval--
+x = setInterval(function(){
+    console.log("HI KOHLI")
+},1000)
 
+//HERE X IS AN ID WE CAN STOP THE SETINTERVAL BY THIS ID
+
+clearInterval(x)
 
 
