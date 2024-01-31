@@ -18,13 +18,13 @@
 // // Boolean to Number
 // let boolValue = true;
 // let numValue = Number(boolValue);
-```
+
 
 // ### 2. Implicit Coercion (Type Coercion):
 
 // Implicit coercion happens automatically when operations between different types are performed. JavaScript tries to convert values to a common type before performing an operation.
 
-#### Examples:
+//#### Examples:
 
 // ``javascript
 // // String and Number concatenation
@@ -75,3 +75,11 @@
 // JS
 // Copy to Clipboard
 // sum = Number(value1) + value2;
+
+//what is coercion---
+//whenever we do an operation based on the input we can actually convert the input for operation
+//here convert means converting types or type of input
+//this conversion can be manually done by us -- this is called explicit typecasting
+//or the language based on some certain rules automatically converts the types -- thsi is called implicit typecasting
+//the term typecasting also referred as type conversion
+//THE IMPLICIT TYPE CONVERSION IS CALLED COERCION
