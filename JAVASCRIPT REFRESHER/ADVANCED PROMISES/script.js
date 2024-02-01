@@ -12,3 +12,12 @@
 //Promise creation---
 
 //Creation of a promise object is synchronous in nature
+//there are three sates of promises-
+//1. pending--- when we create a new promise object this is a default state it represent work in progress 
+//2. fulfilled--- if the operation is completed successfully
+//3. rejected--- if the operation was not successful
+
+//creation of new promise object
+
+
+
