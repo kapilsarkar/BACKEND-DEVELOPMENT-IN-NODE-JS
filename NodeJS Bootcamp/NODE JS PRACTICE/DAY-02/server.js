@@ -25,6 +25,8 @@ console.log("Server File is Running");
 // })
 
 const notes = require('./notes.js')
+var _ = require('lodash');
+
 console.log("Server File is Available");
 
 let age = notes.age
@@ -32,3 +34,9 @@ console.log(age)
 
 let addResult = notes.addNumber(age+18,10)
 console.log("Result is :" +addResult)
+
+var data = ["person","person",1,2,1,"kapil","MCA"]
+
+var filter = _.uniq(data)
+console.log(filter)
+
