@@ -17,11 +17,23 @@ const app = express()
 
 
 app.get('/',function(req,res){
-    res.send("Welcome to the hotel ...how I can help you ?")
+    res.send("Welcome to the hotel ...how I can help you ?,we have list of menus")
 })
 
 app.get('/chicken',(req,res)=>{
     res.send("Sure Sir I would love to server chicken")
 })
 
-app.listen(3000)
+app.get('/idli',(req,res)=>{
+    var customized_idli = {
+        name:"rava idli",
+        size: "10cm diameter",
+        is_sambar:true,
+        is_chutney:false
+    }
+    res.send(customized_idli)
+})
+
+app.listen(3000,()=>{
+    console.log("Server is Listening at port:3000")
+})
