@@ -59,3 +59,8 @@ console.log(`JSON DATA STRING: ${jsonString}`)
 // c) Provide an example of an endpoint you might find in a social media application.
 
 //c) Example of an endpoint in a social media app: /users/{username} to retrieve user information based on their username.
+
+
+// Problem 4: Creating a Route with Express.js
+// a) Explain what the HTTP GET method is used for in the context of web development. 
+// b) Write the code to create a simple Express.js route that responds with "Hello, World!" when a user visits the root URL ("/").
