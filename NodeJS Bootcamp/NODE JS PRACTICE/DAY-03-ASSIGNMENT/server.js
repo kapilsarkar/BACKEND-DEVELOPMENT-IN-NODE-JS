@@ -8,17 +8,17 @@
 
 //Creating  a basic server using Express js
 
-const { json } = require('body-parser')
-const express =  require('express')
-const app = express()
+// const { json } = require('body-parser')
+// const express =  require('express')
+// const app = express()
 
-app.get('/',(req,res)=>{
-    res.send('Hello Server Created')
-})
+// app.get('/',(req,res)=>{
+//     res.send('Hello Server Created')
+// })
 
-app.listen(3000,()=>{
-    console.log('Server is running at port:3000')
-})
+// app.listen(3000,()=>{
+//     console.log('Server is running at port:3000')
+// })
 
 
 // Problem 2: JSON Manipulation
@@ -64,3 +64,68 @@ console.log(`JSON DATA STRING: ${jsonString}`)
 // Problem 4: Creating a Route with Express.js
 // a) Explain what the HTTP GET method is used for in the context of web development. 
 // b) Write the code to create a simple Express.js route that responds with "Hello, World!" when a user visits the root URL ("/").
+
+//Solution 4 :
+// a) Explain what the HTTP GET method is used for in the context of web development. 
+
+//a) The HTTP GET method is used to request data from a server. It's often used to retrieve information or resources from a specified URL.
+
+// b) Write the code to create a simple Express.js route that responds with "Hello, World!" when a user visits the root URL ("/").
+
+// const express =  require('express')
+// const app = express()
+
+// app.get('/',(req,res)=>{
+//     res.send('Hello World')
+// })
+
+// app.listen(3000,()=>{
+//     console.log('Server is running at port:3000')
+// })
+
+
+// Problem 5: JSON Parsing and Object Conversion
+// a) Given a JSON data string: {"product": "Laptop", "price": 999.99}, explain how you would parse it into a JavaScript object.
+//  b) You have an object: { "name": "Bob", "age": 30 }. How would you convert it into a JSON data string?
+
+//Solution 5 :
+
+// a) Given a JSON data string: {"product": "Laptop", "price": 999.99}, explain how you would parse it into a JavaScript object.
+
+const jsonData2 = '{"product": "Laptop", "price": 999.99}'
+
+const ObjectValue = JSON.parse(jsonData2)
+console.log(ObjectValue)
+
+//  b) You have an object: { "name": "Bob", "age": 30 }. How would you convert it into a JSON data string?
+
+const objectValue2 =  { "name": "Bob", "age": 30 }
+console.log(objectValue2)
+const jsonValue2 = JSON.stringify(objectValue2)
+console.log(jsonValue2)
+
+// Problem 6: Building a Basic API
+// Imagine you're building an API for a weather app. Your API needs an endpoint to retrieve the current weather. Create an Express.js route that responds with a JSON object containing the current temperature, conditions, and city.
+
+
+const express = require('express')
+const app = express()
+
+app.get('/weather',(req,res)=>{
+    const weatherData = {
+        temperature:32,
+        condition: "Sunny",
+        city:"Asansol",
+    }
+    console.log(weatherData)
+    res.json(weatherData)
+})
+
+app.listen(3000,()=>{
+    console.log("Server is Running at Port:3000")
+})
+
+
+
+
+
