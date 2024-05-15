@@ -2,18 +2,19 @@
 
 students> use student
 switched to db student
-`For Creating Collections:`
+
+- `For Creating Collections:`
 student> db.createCollection('data')
 { ok: 1 }
 
-`For Inserting One Data:`
+- `For Inserting One Data:`
 student> db.data.insertOne({'name':'Kapil',age:32})
 {
   acknowledged: true,
   insertedId: ObjectId('66441110832f83448e46b799')
 }
 
-`For Inserting Many Data `
+- `For Inserting Many Data `
 student> db.data.insertMany([{'name':'Kapil',age:32},{'name':'John',age:44},{'name':'Sachin',age:50}])
 {
   acknowledged: true,
@@ -25,7 +26,7 @@ student> db.data.insertMany([{'name':'Kapil',age:32},{'name':'John',age:44},{'na
 }
 
 
-`For Find All Data:`
+- `For Find All Data:`
  db.data.find()
 [
   { _id: ObjectId('66441110832f83448e46b799'), name: 'Kapil', age: 32 },
@@ -38,14 +39,14 @@ student> db.data.insertMany([{'name':'Kapil',age:32},{'name':'John',age:44},{'na
   }
 ]
 
-`For Inserting One Data:`
+- `For Inserting One Data:`
 student> db.data.insertOne({'name':'Kapil',age:32,'course-name':'ComputerScience'})
 {
   acknowledged: true,
   insertedId: ObjectId('6644144f832f83448e46b79d')
 }
 
-`For Finding All Data:`
+- `For Finding All Data:`
 student> db.data.find()
 [
   { _id: ObjectId('66441110832f83448e46b799'), name: 'Kapil', age: 32 },
@@ -64,7 +65,9 @@ student> db.data.find()
   }
 ]
 
-`For Finding Data with specific field:`
+
+
+- `For Finding Data with specific field:`
 student> db.data.find({'name':'Kapil'})
 [
   { _id: ObjectId('66441110832f83448e46b799'), name: 'Kapil', age: 32 },
@@ -78,6 +81,6 @@ student> db.data.find({'name':'Kapil'})
 ]
 
 
-`For Find One Sing Data with the specific Field:`
+- `For Find One Sing Data with the specific Field:`
 student> db.data.findOne({'name':'Kapil'})
 { _id: ObjectId('66441110832f83448e46b799'), name: 'Kapil', age: 32 }
