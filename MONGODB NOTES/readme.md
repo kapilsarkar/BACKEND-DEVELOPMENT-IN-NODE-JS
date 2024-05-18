@@ -2,7 +2,7 @@
 
 
 
-### BASICS COMMAND TO START MONGODB
+### BASIC COMMANDS TO START MONGODB
 
 - `mongosh :`  To Start Mongo-Shell
 
