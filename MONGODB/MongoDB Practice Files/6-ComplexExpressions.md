@@ -35,3 +35,28 @@ Output:
   }
 ]`
 
+
+- ADVANTAGES OF USING $expr
+
+Example -
+
+`Find Sales where(quantity *price ) is greater than target price ? `
+
+- Sales Json Data : `[
+  { _id: 1, quantity: 10, price: 15, targetPrice: 120 },
+  { _id: 3, quantity: 6, price: 35, targetPrice: 100 },
+  { _id: 4, quantity: 5, price: 55, targetPrice: 150 },
+  { _id: 5, quantity: 5, price: 55, targetPrice: 150 },
+  { _id: 2, quantity: 5, price: 25, targetPrice: 100 }
+]`
+
+Command - ` db.sales.find({$expr:{$gt:[{$multiply:['$quantity','$price']},'$targetPrice']}})`
+
+Output - `[
+  { _id: 1, quantity: 10, price: 15, targetPrice: 120 },
+  { _id: 3, quantity: 6, price: 35, targetPrice: 100 },
+  { _id: 4, quantity: 5, price: 55, targetPrice: 150 },
+  { _id: 5, quantity: 5, price: 55, targetPrice: 150 },
+  { _id: 2, quantity: 5, price: 25, targetPrice: 100 }
+]`
+
