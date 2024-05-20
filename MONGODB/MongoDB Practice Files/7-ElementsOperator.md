@@ -45,9 +45,26 @@
 
 - `$type :` The $type operator filters documents based on the BSON data type of a field.Basically we need to search or find the fields based on types(BSON type)
 
-  Examples:   1.  `db.products.find({price:{$type:'number'}})`
-             
-              1.  db.products.find({price:{$type:'string'}})
+  Examples:   -  `db.products.find({price:{$type:'number'}})`
+              -  `db.products.find({price:{$type:'string'}})`
 
-- `$size`
+- `$size :` The $size operator matches documents where the size of an array field matches a specified field
+
+   Command : ` db.comments.find({'comments':{$size:4}})`
+
+   Output : `[
+  {
+    _id: 1,
+    title: 'Introduction to MongoDB',
+    content: 'MongoDB is a popular NoSQL database...',
+    author: 'John Doe',
+    comments: [
+      { user: 'Alice', text: 'Great article!' },
+      { user: 'Bob', text: 'Thanks for sharing.' },
+      { user: 'Eva', text: 'Its beatifull!' },
+      { user: 'jessy' }
+    ],
+    metadata: { views: 1000, likes: 50 }
+  }
+]`
 
