@@ -156,3 +156,43 @@ Updated-Output:
 
 ### REMOVING AND RENAMING THE FIELDS
 
+`Example-1` : Renaming the products collection isFeatured field to isFeature,where the price = 123 ?
+
+`$rename:`
+
+
+Command:`db.products.updateMany({price:123},{$rename:{'isFeatured':'isFeature'}})`
+
+Output: 
+`{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 7,
+  modifiedCount: 7,
+  upsertedCount: 0
+}`
+
+Updated-Output:
+
+`[
+  {
+    _id: ObjectId('64c23e543e180eb8a2682ff4'),
+    name: 'Rustic Frozen Towels',
+    company: ObjectId('64c23350e32f4a51b19b9235'),
+    price: 123,
+    colors: [ '#50215b' ],
+    image: '/images/product-Rustic.png',
+    category: ObjectId('64c2342de32f4a51b19b9255'),
+    __v: 0,
+    isFeature: false
+  }
+]`
+
+
+
+
+
+
+
+
+

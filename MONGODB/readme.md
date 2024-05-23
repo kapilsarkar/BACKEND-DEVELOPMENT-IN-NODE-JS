@@ -1258,3 +1258,112 @@ Updated-Output:
   }
 ]`
 
+
+### REMOVING AND RENAMING THE FIELDS
+
+`Example-1` : Renaming the products collection isFeatured field to isFeature,where the price = 123 ?
+
+`$rename:`
+
+
+Command:`db.products.updateMany({price:123},{$rename:{'isFeatured':'isFeature'}})`
+
+Output: 
+`{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 7,
+  modifiedCount: 7,
+  upsertedCount: 0
+}`
+
+Updated-Output:
+
+`[
+  {
+    _id: ObjectId('64c23e543e180eb8a2682ff4'),
+    name: 'Rustic Frozen Towels',
+    company: ObjectId('64c23350e32f4a51b19b9235'),
+    price: 123,
+    colors: [ '#50215b' ],
+    image: '/images/product-Rustic.png',
+    category: ObjectId('64c2342de32f4a51b19b9255'),
+    __v: 0,
+    isFeature: false
+  }
+]`
+
+### ADDITION AND DELETION IN MONGODB
+
+`Sample-Data` : `[
+  {
+    _id: 2,
+    title: 'Deep Dive into Aggregation Framework',
+    content: 'The aggregation framework in MongoDB...',
+    author: 'Jane Smith',
+    comments: [
+      { user: 'Charlie', text: 'Very informative!' },
+      { user: 'David', text: 'Well explained.' }
+    ],
+    metadata: { views: 800, likes: 70 }
+  }
+]`
+
+`Example-1`: Add a new user in the above data
+
+Command : `db.comments.updateOne({_id:2},{$set:{'user':'Hrithik'}})`
+
+Output : `{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}`
+
+Updated-Output :
+
+`[
+  {
+    _id: 2,
+    title: 'Deep Dive into Aggregation Framework',
+    content: 'The aggregation framework in MongoDB...',
+    author: 'Jane Smith',
+    comments: [
+      { user: 'Charlie', text: 'Very informative!' },
+      { user: 'David', text: 'Well explained.' }
+    ],
+    metadata: { views: 800, likes: 70 },
+    user: 'Hrithik'
+  }
+]`
+
+`Example-2`: Delete the data with _id:2
+
+Command : `db.comments.updateOne({_id:2},{$unset:{'user':1}})`
+
+Output:
+
+`{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}`
+
+Updated-Output:
+
+`[
+  {
+    _id: 2,
+    title: 'Deep Dive into Aggregation Framework',
+    content: 'The aggregation framework in MongoDB...',
+    author: 'Jane Smith',
+    comments: [
+      { user: 'Charlie', text: 'Very informative!' },
+      { user: 'David', text: 'Well explained.' }
+    ],
+    metadata: { views: 800, likes: 70 }
+  }
+]`
