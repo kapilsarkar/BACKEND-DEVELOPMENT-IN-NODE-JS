@@ -1605,3 +1605,139 @@ When not to Create a Index :
 - Indexing Small Collections : In smaller collections, the cost of index maintenance might outweigh the benefits gained from querying
 
 
+### AGGREGATION FRAMEWORK IN MONGODB
+
+- `Definition` : Aggregation is the process of performing transformations on documents and combining them to produce computed results.
+
+- `Pipeline Stages` : Aggregations consist of multiple pipeline stages, each performing a specific operation on the input data.
+
+- `Benefits` :
+
+1. Aggregating Data: Complex calculations and operations are possible.
+
+1. Advanced Transformations: Data can be combined, reshaped, and computed for insights.
+
+1. Efficient Processing: Aggregation handles large datasets efficiently.
+
+
+### $match :
+
+- The $match stage is similar to the query used as the first argument in .find(). 
+
+- It filters documents based on specified conditions.
+
+Example - 1 : `Retrieve all products with a name = Sleek Wooden Tuna ?`
+
+Command : `db.products.aggregate([{$match:{'name':'Sleek Wooden Tuna'}}])`
+
+Output : `[
+  {
+    _id: ObjectId('64c23edf9dc1fb2f85601ae5'),
+    name: 'Sleek Wooden Tuna',
+    company: ObjectId('64c23350e32f4a51b19b9235'),
+    price: 101,
+    colors: [ '#29505b' ],
+    image: '/images/product-Recycled.png',
+    category: ObjectId('64c2342de32f4a51b19b9255'),
+    isFeatured: false,
+    __v: 0
+  },
+  {
+    _id: ObjectId('64c23edf9dc1fb2f856027db'),
+    name: 'Sleek Wooden Tuna',
+    company: ObjectId('64c23350e32f4a51b19b9241'),
+    price: 363,
+    colors: [ '#464438' ],
+    image: '/images/product-Sleek.png',
+    category: ObjectId('64c2342de32f4a51b19b9256'),
+    isFeatured: false,
+    __v: 0
+  }
+]`
+
+Example - 2 : Retrieve all the products where price is greater than 50
+
+Command : `db.products.aggregate([{$match: {price:{$gt:50}}}])`
+
+Output : 
+`[
+  {
+    _id: ObjectId('64c23601e32f4a51b19b9262'),
+    name: 'Smartphone Model X',
+    company: '64c23350e32f4a51b19b9230',
+    price: 699,
+    colors: [ '#000000', '#ffffff', '#ff0000' ],
+    image: '/images/product-smartphone.png',
+    category: '64c2342de32f4a51b19b924e',
+    isFeatured: false
+  },
+  {
+    _id: ObjectId('64c23601e32f4a51b19b9263'),
+    name: 'Laptop Pro',
+    company: '64c23350e32f4a51b19b9231',
+    price: 1299,
+    colors: [ '#333333', '#cccccc', '#00ff00' ],
+    image: '/images/product-laptop.png',
+    category: '64c2342de32f4a51b19b924e',
+    isFeatured: true
+  }
+  ]`
+
+
+  ### $group :
+
+- The $group stage groups documents by specified fields and performs aggregate operations on grouped data.
+
+- It is like the reduce() method in Java Script.
+
+- When dealing with the $group stage we need to pass $sign for our existing field not the one we are going to create.
+
+Command : `db.products.aggregate([{$group:{_id:"$company",totalProducts:{$sum:1}}}])`
+
+Output: `[
+  { _id: ObjectId('64c23350e32f4a51b19b9233'), totalProducts: 320 },
+  { _id: '64c23350e32f4a51b19b9254', totalProducts: 1 },
+  { _id: '64c23350e32f4a51b19b9250', totalProducts: 2 },
+  { _id: ObjectId('64c23350e32f4a51b19b9243'), totalProducts: 351 },
+  { _id: ObjectId('64c23350e32f4a51b19b923e'), totalProducts: 381 },
+  { _id: ObjectId('64c23350e32f4a51b19b923d'), totalProducts: 337 },
+  { _id: '64c23350e32f4a51b19b9252', totalProducts: 2 },
+  { _id: '64c23350e32f4a51b19b924b', totalProducts: 2 },
+  { _id: '64c23350e32f4a51b19b9256', totalProducts: 1 },
+  { _id: '64c23350e32f4a51b19b923f', totalProducts: 5 },
+  { _id: '64c23350e32f4a51b19b9245', totalProducts: 2 },
+  { _id: ObjectId('64c23350e32f4a51b19b9248'), totalProducts: 374 },
+  { _id: ObjectId('64c23350e32f4a51b19b9230'), totalProducts: 319 },
+  { _id: '64c23350e32f4a51b19b9249', totalProducts: 2 },
+  { _id: '64c23350e32f4a51b19b9231', totalProducts: 6 },
+  { _id: '64c23350e32f4a51b19b9253', totalProducts: 1 },
+  { _id: ObjectId('64c23350e32f4a51b19b9245'), totalProducts: 313 },
+  { _id: ObjectId('64c23350e32f4a51b19b924d'), totalProducts: 342 },
+  { _id: '64c23350e32f4a51b19b9233', totalProducts: 6 },
+  { _id: ObjectId('64c23350e32f4a51b19b9246'), totalProducts: 305 }
+]`
+
+Command : `db.products.aggregate([{$match:{company:"64c23350e32f4a51b19b9252"}}])`
+
+Output : `[
+  {
+    _id: ObjectId('64c23871e32f4a51b19b92cb'),
+    name: 'Dumbbell Set',
+    company: '64c23350e32f4a51b19b9252',
+    price: 49,
+    colors: [ '#333333', '#ff9900', '#00cc99' ],
+    image: '/images/product-dumbbell-set.png',
+    category: '64c2342de32f4a51b19b925e',
+    isFeatured: false
+  },
+  {
+    _id: ObjectId('64c239f1e32f4a51b19b92f7'),
+    name: 'Wireless Charging Dock',
+    company: '64c23350e32f4a51b19b9252',
+    price: 49,
+    colors: [ '#000000', '#666666', '#cc9900' ],
+    image: '/images/product-charging-dock.png',
+    category: '64c2342de32f4a51b19b924e',
+    isFeatured: false
+  }
+]`
