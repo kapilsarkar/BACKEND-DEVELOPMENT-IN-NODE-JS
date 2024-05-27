@@ -1,4 +1,4 @@
-### $project
+### $project :
 
 - The $project stage reshapes documents, includes or excludes fields, and performs operations on fields.
 
