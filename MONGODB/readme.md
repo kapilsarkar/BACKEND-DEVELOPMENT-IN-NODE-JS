@@ -1913,4 +1913,98 @@ Output : `[
 
 - The $filter stage filters elements of an array based on specified conditions.
 
-### MONGODB ATLAS
+### MONGODB ATLAS :
+
+
+- MongoDB Atlas is MongoDB's fully managed cloud database service.
+
+- It offers an easy way to deploy, manage, and scale MongoDB databases in the cloud.
+
+- Atlas eliminates the need for manual setup and maintenance, allowing developers to focus on their applications.
+
+- It provides automated scaling options to accommodate growing workloads.
+
+- Atlas supports global clusters, enabling databases to be deployed across multiple regions for better data availability and reduced latency.
+
+- `Alas server as your database service provider.Data is hosted on Atlas and for data manipulation. `
+
+- `Two Options are available .Compass offering a graphical interface and mongoshell a command line tool. Both tools facilitate data management and interaction with atlas.`
+
+
+### CLUSTERS IN MONGODB :
+
+In MongoDb a Cluster refers to a group of interconnected servers (nodes) that work together to manage data.
+
+Name of Cluster : `Cluster0`
+
+UserName : `ksarkar81`
+
+Password: `12345`
+
+ConnectionString : `mongosh "mongodb+srv://cluster0.fpbpqh8.mongodb.net/" --apiVersion 1 --username ksarkar81`
+
+After typing this connection string on cmd we got enter the password the we get the output as :
+
+Output :
+ `Current Mongosh Log ID: 6656933d623f81c8d746b798
+Connecting to:          mongodb+srv://<credentials>@cluster0.fpbpqh8.mongodb.net/?appName=mongosh+2.2.5
+Using MongoDB:          7.0.8 (API Version 1)
+Using Mongosh:          2.2.5
+mongosh 2.2.6 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/`
+
+ `Now it is same like before we were playing with database hosted in our localhost but now we are connected to the live database.Rest Everything is same.`
+
+ Connection string for MongoDB Compass : `mongodb+srv://ksarkar81:<password>@cluster0.fpbpqh8.mongodb.net/`
+
+Password: `12345`
+
+### COMMAND ON MONGO-DB SHELL VS COMPASS
+
+- Command on Shell :  `db.products.find({'price':{$gt:1200}}).limit(1)`
+
+Output On shell `[
+  {
+    _id: ObjectId('64c23601e32f4a51b19b9263'),
+    name: 'Laptop Pro',
+    company: '64c23350e32f4a51b19b9231',
+    price: 1299,
+    colors: [ '#333333', '#cccccc', '#00ff00' ],
+    image: '/images/product-laptop.png',
+    category: '64c2342de32f4a51b19b924e',
+    isFeatured: true
+  },
+]`
+
+- Command on Compass : `{price:{$gt:1200}}` and set the limit to 1 from Options
+
+Output On Compass :
+ 
+`{
+  "_id": {
+    "$oid": "64c23601e32f4a51b19b9263"
+  },
+  "name": "Laptop Pro",
+  "company": "64c23350e32f4a51b19b9231",
+  "price": 1299,
+  "colors": [
+    "#333333",
+    "#cccccc",
+    "#00ff00"
+  ],
+  "image": "/images/product-laptop.png",
+  "category": "64c2342de32f4a51b19b924e",
+  "isFeatured": true
+}`
+
+
+### MONGODB DRIVERS : 
+
+- Software libraries that allow applications to interact with MongoDB databases.
+
+- MongoDB offers official and community-supported drivers for various programming languages.
+
+- Drivers provide APIs tailored to specific programming languages.
+
+
