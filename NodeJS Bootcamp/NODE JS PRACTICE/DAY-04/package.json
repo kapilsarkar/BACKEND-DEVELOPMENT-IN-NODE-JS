@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.2"
+  },
+  "scripts": {
+    "dev": "nodemon server"
+  },
+  "name": "day-04",
+  "description": "| SQL    | MONGODB|\r   |--------|--------|\r   |DATABASE|DATABASE|",
+  "version": "1.0.0",
+  "main": "server.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
