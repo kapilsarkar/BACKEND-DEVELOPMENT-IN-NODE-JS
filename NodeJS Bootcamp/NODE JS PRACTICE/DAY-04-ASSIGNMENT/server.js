@@ -43,6 +43,31 @@
 //Solution d) `db.orders.find({totalAmount:{$gt:'$100'}})`
 
 
+//Question 3: SQL vs. MongoDB ?
+
+// Answer: SQL databases use structured tables with rows and columns to store data, while MongoDB uses flexible and dynamic documents in collections. SQL databases use SQL as a querying language, while MongoDB uses a JavaScript-like syntax for queries. SQL databases are suitable for applications with well-defined and structured data, such as financial systems. MongoDB is better for projects with changing or unstructured data, like content management systems or real-time analytics.
 
 
+//Question 4: Query Comparison
+
+//Compare and contrast the following MongoDB and SQL queries for retrieving data:
+
+// a) MongoDB: db.products.find({ category: "Electronics" })
+
+// SQL: SELECT * FROM products WHERE category = "Electronics"
+
+//Solution-a) Both queries retrieve products with the category "Electronics."
+
+
+// b) MongoDB: db.users.findOne({ username: "Alice" }) 
+
+// SQL: SELECT * FROM users WHERE username = "Alice"
+
+//Solution-b)Both queries retrieve a user named "Alice."
+
+// c) MongoDB: db.orders.aggregate([{ $group: { _id: "$status", total: { $sum: "$amount" } } }]) 
+
+// SQL: SELECT status, SUM(amount) as total FROM orders GROUP BY status
+
+//Solution-c) Both queries calculate the total amount of orders grouped by status.
 
