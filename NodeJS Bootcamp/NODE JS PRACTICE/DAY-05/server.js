@@ -13,24 +13,22 @@ app.get("/", function (req, res) {
 });
 
 //post route to add a person
-app.post("/person", (req, res) => {
-  const data = req.body; // Assuming the request body contains the person data
+app.post("/person", async (req, res) => {
+  try {
+    const data = req.body; // Assuming the request body contains the person data
 
-  //Create a new person document using the Mongoose model
-  const newPerson = new Person(data);
+    //Create a new person document using the Mongoose model
+    const newPerson = new Person(data);
 
-  //Save the newPerson to the database
-  newPerson.save((error,savedPerson)=>{
-    if(error){
-        console.log("Error in Saving Person Data",error)
-        res.status(500).json({error:'Internal server error'})
-    }
-    else{
-        console.log("Data Save Successfully")
-        res.status(200).json(savedPerson)
-    }
-  })
- 
+    //Save the newPerson to the database
+    const response = await newPerson.save();
+    console.log("Data Saved");
+    res.status(200).json(response);
+  } 
+  catch (err) {
+    console.log(err);
+    res.status(500).json({ Error: "Internal Server Error" });
+  }
 });
 
 app.listen(3000, () => {
