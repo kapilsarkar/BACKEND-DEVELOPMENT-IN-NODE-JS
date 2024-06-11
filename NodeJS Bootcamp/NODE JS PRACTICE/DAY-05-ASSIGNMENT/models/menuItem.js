@@ -25,11 +25,11 @@ const menuItemSchema = new mongoose.Schema({
   },
   num_sales: {
     type: Number,
-    default: 0,
+    dafault: 0,
   },
 });
 
-//Create a menu model
+//Create a menu model:
 const menuItem = mongoose.model("MenuItem", menuItemSchema);
 
 module.exports = menuItem;
