@@ -32,6 +32,23 @@ app.post("/menu", async (req, res) => {
   }
 });
 
+//Question 2: Create a GET Method API
+//Create a GET method API to List down the All Menu Items as per the schema we discussed ( /menu )
+
+app.get("/menu", async (req, res) => {
+  try {
+    // Use the Mongoose model to fetch all menuItems from the database
+    const data = await MenuItem.find();
+    console.log("Data Fetched Successfully");
+
+    // Send the list of menuItems as a JSON response
+    res.status(200).json(data);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ Error: "MenuItems cannot be fetched" });
+  }
+});
+
 app.listen(2000, () => {
   console.log("Server is Listening at port:2000");
 });
