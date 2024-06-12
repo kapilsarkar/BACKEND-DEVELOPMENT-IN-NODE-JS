@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
 const MenuItem = require("./models/menuItem");
+const Task = require("./models/task");
 
 app.get("/", (req, res) => {
   res.send(
@@ -46,6 +47,39 @@ app.get("/menu", async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({ Error: "MenuItems cannot be fetched" });
+  }
+});
+
+//Question 3: Creating a POST API with Express and Mongoose :
+// b) Create a POST API endpoint /api/tasks that allow clients to submit new tasks to the database. Ensure it handles request validation and responds with the newly created task.
+
+app.post("/api/tasks", async (req, res) => {
+  try {
+    //Create a newTask document using Mongoose model
+    const task = new Task(req.body);
+
+    //Save the newTask data to the database
+    await task.save();
+    console.log("Task Data Saved");
+    res.status(201).send(task);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
+});
+
+//Question 4: Creating a GET API with Express and Mongoose
+//Continuing with the task management application, you need to create a GET API endpoint for retrieving a list of tasks from the database.
+//Create a GET API endpoint /api/tasks that retrieve a list of all tasks from the database. Ensure it handles errors and responds with the list of tasks in JSON format.
+
+app.get("/api/tasks", async (req, res) => {
+  try {
+    const data = await Task.find();
+    console.log("Task Data Fetched Succesfully");
+    res.status(200).json(data);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ Error: "Task Data Cannot be Fetched" });
   }
 });
 
