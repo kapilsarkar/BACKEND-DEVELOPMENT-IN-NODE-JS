@@ -13,40 +13,12 @@ app.get("/", (req, res) => {
   );
 });
 
-//post route to add a person :
 
-app.post("/person", async (req, res) => {
-  try {
-    const data = req.body; // Assuming the request body contains the person data
 
-    //Create a new person document using the Mongoose model
-    const newPerson = new Person(data);
 
-    //Save the newPerson to the database:
-    const response = await newPerson.save();
-    console.log("Person Data Saved");
-    res.status(200).json(response);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ Error: "Internal Server Error" });
-  }
-});
 
-//GET method to get the person
-app.get("/person", async (req, res) => {
-  try {
-    // Use the Mongoose model to fetch all persons from the database
-    const data = await Person.find();
-    console.log("Person Data Fetched Successfully");
-    // Send the list of persons as a JSON response
-    res.status(200).json(data);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ Error: "Data Cannot be fetched" });
-  }
-});
 
-//Get method for menu :
+//GET method for menu :
 app.get("/menu", async (req, res) => {
   try {
     // Use the Mongoose model to fetch all menuItems from the database
@@ -61,7 +33,7 @@ app.get("/menu", async (req, res) => {
   }
 });
 
-//post method for menu :
+//POST method for menu :
 app.post("/menu", async (req, res) => {
   try {
     const data = req.body; // Assuming the request body contains the person data
@@ -78,6 +50,12 @@ app.post("/menu", async (req, res) => {
     res.status(500).json({ Error: "Internal Server Error" });
   }
 });
+
+//Import the router files
+const personRoutes = require('./routes/personRoutes')
+
+//Use the router
+app.use('/person',personRoutes)
 
 app.listen(5000, () => {
   console.log("Server is Listening at port:5000");
