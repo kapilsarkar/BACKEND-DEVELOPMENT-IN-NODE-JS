@@ -41,7 +41,7 @@ router.get("/:workType", async (req, res) => {
 
   try {
     const workType = req.params.workType; //Extract the workType from the URL parameter
-    if (workType == 'chef' || workType == 'manager' || workType == 'waiter') {
+    if (workType == "chef" || workType == "manager" || workType == "waiter") {
       const response = await Person.find({ work: workType });
       console.log("Work Data Fetched Successfully");
       res.status(200).json(response);
@@ -51,6 +51,51 @@ router.get("/:workType", async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({ Error: "Internal Server Error" });
+  }
+});
+
+//Update Route For Person :
+router.put("/:id", async (req, res) => {
+  try {
+    const personId = req.params.id; //Extract the id from the URL Parameter.
+    const updatedPersonData = req.body; //Updated Data for the person
+
+    const response = await Person.findByIdAndUpdate(
+      personId,
+      updatedPersonData,
+      {
+        new: true, //Return the updated document
+        runValidators: true, //Run Mongoose validation
+      }
+    );
+    if (!response) {
+      return res.status(404).json({ error: "Person Not Found" });
+    }
+
+    console.log("Person Data Updated");
+    res.status(200).json(response);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+//Delete Route For Person :
+router.delete("/:id", async (req, res) => {
+  try {
+    const personId = req.params.id; //Extract the id from the URL Parameter.
+
+    //Assuming you have a Person Model
+    const response = await Person.findByIdAndDelete(personId);
+
+    if (!response) {
+      return res.status(404).json({ error: "Person Not Found" });
+    }
+    console.log("Person Data Deleted");
+    res.status(200).json({ message: "Person Deleted Successfully" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
