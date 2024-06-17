@@ -33,12 +33,3 @@ const menuItemSchema = new mongoose.Schema({
 const menuItem = mongoose.model("MenuItem", menuItemSchema);
 
 module.exports = menuItem;
-
-// {
-//     "name": "Chow Min",
-//     "price": 9.99,
-//     "taste": "spicy",
-//     "is_drink": true,
-//     "ingredients": [ 'chow', 'paneer', 'potato' ],
-//     "num_sales": 10,
-// }
